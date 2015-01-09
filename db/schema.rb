@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150109204539) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "followers", force: :cascade do |t|
     t.integer  "follower_id", null: false
     t.integer  "followed_id", null: false
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150109204539) do
     t.datetime "deleted_at"
   end
 
-  add_index "jokes", ["deleted_at"], name: "index_jokes_on_deleted_at"
+  add_index "jokes", ["deleted_at"], name: "index_jokes_on_deleted_at", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",       null: false
