@@ -1,0 +1,7 @@
+<ul>
+	<% @jokes.each do |joke| %>
+	<li><%= link_to joke.content, joke_path(user_id: joke.user.id, id: joke.id) %></li>
+
+	<% end %>
+
+</ul>
