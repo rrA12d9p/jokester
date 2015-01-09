@@ -1,5 +1,5 @@
 <ul>
 	<% @jokes.each do |joke| %>
-		<li><%= link_to joke.content, user_joke_path_offset(joke.user, joke) %></li>
+		<li><%= link_to joke.content, user_joke_path(user_id: joke.user.id, id: joke.user_joke_id) %></li>
 	<% end %>
 </ul>

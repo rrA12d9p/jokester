@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109150334) do
+ActiveRecord::Schema.define(version: 20150109204539) do
 
   create_table "followers", force: :cascade do |t|
     t.integer  "follower_id", null: false
@@ -21,11 +21,15 @@ ActiveRecord::Schema.define(version: 20150109150334) do
   end
 
   create_table "jokes", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.text     "content",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",      null: false
+    t.text     "content",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_joke_id"
+    t.datetime "deleted_at"
   end
+
+  add_index "jokes", ["deleted_at"], name: "index_jokes_on_deleted_at"
 
   create_table "users", force: :cascade do |t|
     t.string   "name",       null: false
