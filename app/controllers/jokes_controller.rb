@@ -1,6 +1,6 @@
 class JokesController < ApplicationController
 	def index
-		@jokes=Joke.order(updated_at: :desc)
+		@jokes = Joke.order(created_at: :asc)
 	end
 	def show
 		# find the joke relative to a user, not all jokes
